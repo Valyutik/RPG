@@ -744,7 +744,7 @@ GameObject:
   - component: {fileID: 59498969}
   - component: {fileID: 59498968}
   m_Layer: 5
-  m_Name: XPText
+  m_Name: ExpText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12909,7 +12909,7 @@ GameObject:
   - component: {fileID: 1001429704}
   - component: {fileID: 1001429705}
   m_Layer: 5
-  m_Name: XPSlider
+  m_Name: ExpSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14180,7 +14180,7 @@ GameObject:
   - component: {fileID: 1149662661}
   - component: {fileID: 1149662660}
   m_Layer: 5
-  m_Name: Button
+  m_Name: HealthButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14249,7 +14249,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1149662661}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PlayForge_Team.RPG.Runtime.Skills, RPG.Runtime
+        m_MethodName: PlusHealth
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1149662661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15300,7 +15312,7 @@ GameObject:
   - component: {fileID: 1225673391}
   - component: {fileID: 1225673390}
   - component: {fileID: 1225673392}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: EventSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15330,12 +15342,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1225673388}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.70710635, y: 0, z: -0, w: 0.7071073}
+  m_LocalPosition: {x: -22.79, y: 0.000022888184, z: -19.810001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1254343726}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1225673392
 MonoBehaviour:
@@ -15472,7 +15484,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1254343726
 Transform:
   m_ObjectHideFlags: 0
@@ -15488,6 +15500,7 @@ Transform:
   m_Children:
   - {fileID: 767366925}
   - {fileID: 881276798}
+  - {fileID: 1225673391}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1001 &1259484052
@@ -25107,13 +25120,14 @@ GameObject:
   - component: {fileID: 1971989949}
   - component: {fileID: 1971989951}
   - component: {fileID: 1971989950}
+  - component: {fileID: 1971989952}
   m_Layer: 5
   m_Name: BackgroundImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1971989949
 RectTransform:
   m_ObjectHideFlags: 0
@@ -25175,6 +25189,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1971989948}
   m_CullTransparentMesh: 1
+--- !u!114 &1971989952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1971989948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4512e0f3008a431089e8df8c5e701e39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expToReachLevel: 640000002c010000e8030000b80b000088130000
+  expByEnemyKill: 50
+  unallocatedSkillsText: {fileID: 955707246}
+  healthText: {fileID: 1789815342}
+  strengthText: {fileID: 724704242}
+  expText: {fileID: 59498968}
+  levelText: {fileID: 2106129900}
+  expSlider: {fileID: 1001429705}
+  healthButton: {fileID: 1149662660}
+  strengthButton: {fileID: 1981561343}
+  skillPointsByLevel: 5
+  healthByPoints: 10
+  damageByStrength: 10
+  baseHealth: 100
+  baseDamage: 20
 --- !u!1001 &1972239520
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25328,7 +25369,7 @@ GameObject:
   - component: {fileID: 1981561344}
   - component: {fileID: 1981561343}
   m_Layer: 5
-  m_Name: Button
+  m_Name: StrengthButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25397,7 +25438,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1981561344}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PlayForge_Team.RPG.Runtime.Skills, RPG.Runtime
+        m_MethodName: PlusStrength
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1981561344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27402,6 +27455,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 324353941}
     m_Modifications:
+    - target: {fileID: 696087883172245757, guid: 624b8c0f144cb4f4387ab29832b25abb,
+        type: 3}
+      propertyPath: cursorLocked
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2057589258918425971, guid: 624b8c0f144cb4f4387ab29832b25abb,
+        type: 3}
+      propertyPath: skills
+      value: 
+      objectReference: {fileID: 1971989952}
     - target: {fileID: 4237444775014407053, guid: 624b8c0f144cb4f4387ab29832b25abb,
         type: 3}
       propertyPath: m_Name
@@ -27484,4 +27547,3 @@ SceneRoots:
   m_Roots:
   - {fileID: 1254343726}
   - {fileID: 324353941}
-  - {fileID: 1225673391}

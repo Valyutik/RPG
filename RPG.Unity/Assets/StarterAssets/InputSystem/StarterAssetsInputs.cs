@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
@@ -7,6 +8,8 @@ namespace StarterAssets
 {
 	public class StarterAssetsInputs : MonoBehaviour
 	{
+		public event Action OnOpenSkillsEvent;
+		
 		[Header("Character Input Values")]
 		public Vector2 move;
 		public Vector2 look;
@@ -20,6 +23,7 @@ namespace StarterAssets
 		[Header("Mouse Cursor Settings")]
 		public bool cursorLocked = true;
 		public bool cursorInputForLook = true;
+
 
 #if ENABLE_INPUT_SYSTEM
 		public void OnMove(InputValue value)
@@ -49,8 +53,12 @@ namespace StarterAssets
 		{
 			attack = value.isPressed;
 		}
-#endif
 
+		public void OnOpenSkillWindow(InputValue value)
+		{
+			OnOpenSkillsEvent?.Invoke();
+		}
+#endif
 
 		public void MoveInput(Vector2 newMoveDirection)
 		{
