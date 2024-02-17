@@ -1,8 +1,8 @@
 {
-    "name": "RPG.Runtime",
-    "rootNamespace": "PlayForge_Team.RPG.Runtime",
+    "name": "StarterAssets",
+    "rootNamespace": "StarterAssets",
     "references": [
-        "GUID:2f065df96e6943998187fe173420aaac"
+        "GUID:75469ad4d38634e559750d17036d5f7c"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
