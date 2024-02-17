@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace PlayForge_Team.RPG.Runtime
 {
@@ -9,13 +10,12 @@ namespace PlayForge_Team.RPG.Runtime
         private static readonly int Attack = Animator.StringToHash("Attack");
         private static readonly int Dead = Animator.StringToHash("Dead");
         
-        [SerializeField] private float speed = 3f;
-        [SerializeField] private float rotationSpeed = 1f;
         [SerializeField] private float followDistance = 10f;
         [SerializeField] private float attackDistance = 1f;
         [SerializeField] private Transform target;
         [SerializeField] private LayerMask weaponLayerMask;
 
+        private NavMeshAgent _navMeshAgent;
         private Rigidbody _rigidbody;
         private Collider _collider;
         private Animator _animator;
@@ -24,6 +24,7 @@ namespace PlayForge_Team.RPG.Runtime
 
         private void Start()
         {
+            _navMeshAgent = GetComponent<NavMeshAgent>();
             _rigidbody = GetComponent<Rigidbody>();
             _collider = GetComponent<Collider>();
             _animator = GetComponentInChildren<Animator>();
@@ -41,26 +42,10 @@ namespace PlayForge_Team.RPG.Runtime
             }
             else if (CheckDistanceToTarget(followDistance))
             {
-                var tr = transform;
-                var currentPosition = tr.position;
-                var targetPosition = target.position;
-                var forward = tr.forward;
-                var walkingDirection = targetPosition - currentPosition;
-
-                var turningDirection =
-                    Vector3.RotateTowards(forward, walkingDirection, rotationSpeed * Time.deltaTime, 0);
-                currentPosition =
-                    Vector3.MoveTowards(currentPosition, targetPosition, speed * Time.deltaTime);
-                
-                tr.rotation = Quaternion.LookRotation(turningDirection);
-                tr.position = currentPosition;
-                
-                _animator.SetFloat(Speed, 1);
+                _navMeshAgent.SetDestination(target.position);
             }
-            else
-            {
-                _animator.SetFloat(Speed, 0);
-            }
+            
+            _animator.SetFloat(Speed, _navMeshAgent.velocity.magnitude);
             _animator.SetBool(Attack, _isAttack);
         }
 
