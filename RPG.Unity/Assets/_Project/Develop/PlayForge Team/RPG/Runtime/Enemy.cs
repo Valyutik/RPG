@@ -12,13 +12,16 @@ namespace PlayForge_Team.RPG.Runtime
         
         [SerializeField] private float followDistance = 10f;
         [SerializeField] private float attackDistance = 1f;
+        [SerializeField] private float maxHealth = 100f;
         [SerializeField] private Transform target;
+        [SerializeField] private Skills skills;
         [SerializeField] private LayerMask weaponLayerMask;
 
         private NavMeshAgent _navMeshAgent;
         private Rigidbody _rigidbody;
         private Collider _collider;
         private Animator _animator;
+        private float _currentHealth;
         private bool _isAttack;
         private bool _isDead;
 
@@ -28,6 +31,7 @@ namespace PlayForge_Team.RPG.Runtime
             _rigidbody = GetComponent<Rigidbody>();
             _collider = GetComponent<Collider>();
             _animator = GetComponentInChildren<Animator>();
+            _currentHealth = maxHealth;
         }
 
         private void Update()
@@ -53,7 +57,12 @@ namespace PlayForge_Team.RPG.Runtime
         {
             if ((weaponLayerMask & 1 << other.gameObject.layer) == 1 << other.gameObject.layer)
             {
-                Death();
+                _currentHealth -= skills.GetPlayerDamage();
+                _currentHealth = Mathf.Clamp(_currentHealth, 0, maxHealth);
+                if (_currentHealth <= 0)
+                {
+                    Death();
+                }
             }
         }
 

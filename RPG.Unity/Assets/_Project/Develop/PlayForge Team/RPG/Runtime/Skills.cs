@@ -45,6 +45,11 @@ namespace PlayForge_Team.RPG.Runtime
             UpdateUnallocatedSkillsPoints();
         }
 
+        public int GetPlayerDamage()
+        {
+            return baseDamage + damageByStrength * _strengthPoints;
+        }
+
         private void UpdateExp()
         {
             if (CurrentExp >= expToReachLevel[_currentLevel - 1])
