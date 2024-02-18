@@ -6,8 +6,6 @@ namespace PlayForge_Team.RPG.Runtime
 {
     public sealed class Skills : MonoBehaviour
     {
-        private const int CurrentExp = 0;
-        
         [SerializeField] private int[] expToReachLevel;
         [SerializeField] private int expByEnemyKill;
         [SerializeField] private TextMeshProUGUI unallocatedSkillsText, healthText, strengthText, expText, levelText;
@@ -15,6 +13,7 @@ namespace PlayForge_Team.RPG.Runtime
         [SerializeField] private Button healthButton, strengthButton;
         [SerializeField] private int skillPointsByLevel, healthByPoints, damageByStrength, baseHealth, baseDamage;
 
+        private int _currentExp;
         private int _currentLevel = 1;
         private int _unallocatedSkillPoints;
         private int _strengthPoints;
@@ -50,14 +49,20 @@ namespace PlayForge_Team.RPG.Runtime
             return baseDamage + damageByStrength * _strengthPoints;
         }
 
+        public void KillEnemy()
+        {
+            _currentExp += expByEnemyKill;
+            UpdateExp();
+        }
+
         private void UpdateExp()
         {
-            if (CurrentExp >= expToReachLevel[_currentLevel - 1])
+            if (_currentExp >= expToReachLevel[_currentLevel - 1])
             {
                 LevelUp();
             }
-            expText.text = CurrentExp + " / " + expToReachLevel[_currentLevel - 1];
-            expSlider.value = (float)CurrentExp / expToReachLevel[_currentLevel - 1];
+            expText.text = _currentExp + " / " + expToReachLevel[_currentLevel - 1];
+            expSlider.value = (float)_currentExp / expToReachLevel[_currentLevel - 1];
         }
 
         private void UpdateLevel()

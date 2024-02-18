@@ -72,6 +72,7 @@ namespace PlayForge_Team.RPG.Runtime
             _animator.SetTrigger(Dead);
             _rigidbody.isKinematic = true;
             _collider.enabled = false;
+            skills.KillEnemy();
         }
 
         private bool CheckDistanceToTarget(float distance)
