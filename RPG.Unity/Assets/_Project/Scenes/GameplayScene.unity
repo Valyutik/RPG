@@ -14293,7 +14293,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1971989952}
         m_TargetAssemblyTypeName: PlayForge_Team.RPG.Runtime.Skills, RPG.Runtime
         m_MethodName: PlusHealth
         m_Mode: 1
@@ -25259,8 +25259,8 @@ MonoBehaviour:
   expToReachLevel: 640000002c010000e8030000b80b000088130000
   expByEnemyKill: 50
   unallocatedSkillsText: {fileID: 955707246}
-  healthText: {fileID: 1789815342}
-  strengthText: {fileID: 724704242}
+  healthText: {fileID: 366086816}
+  strengthText: {fileID: 1603037454}
   expText: {fileID: 59498968}
   levelText: {fileID: 2106129900}
   expSlider: {fileID: 1001429705}
@@ -25494,7 +25494,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1971989952}
         m_TargetAssemblyTypeName: PlayForge_Team.RPG.Runtime.Skills, RPG.Runtime
         m_MethodName: PlusStrength
         m_Mode: 1
@@ -27511,7 +27511,7 @@ PrefabInstance:
     - target: {fileID: 696087883172245757, guid: 624b8c0f144cb4f4387ab29832b25abb,
         type: 3}
       propertyPath: cursorLocked
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2057589258918425971, guid: 624b8c0f144cb4f4387ab29832b25abb,
         type: 3}

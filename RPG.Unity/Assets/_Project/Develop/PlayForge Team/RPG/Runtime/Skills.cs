@@ -38,7 +38,7 @@ namespace PlayForge_Team.RPG.Runtime
 
         public void PlusStrength()
         {
-            _strengthPoints--;
+            _strengthPoints++;
             _unallocatedSkillPoints--;
             UpdateStrength();
             UpdateUnallocatedSkillsPoints();
