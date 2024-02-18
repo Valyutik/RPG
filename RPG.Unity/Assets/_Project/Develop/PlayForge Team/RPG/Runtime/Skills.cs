@@ -12,7 +12,9 @@ namespace PlayForge_Team.RPG.Runtime
         [SerializeField] private Slider expSlider;
         [SerializeField] private Button healthButton, strengthButton;
         [SerializeField] private int skillPointsByLevel, healthByPoints, damageByStrength, baseHealth, baseDamage;
-
+        [SerializeField] private GameObject swordWeapon;
+        [SerializeField] private GameObject longSwordWeapon;
+        
         private int _currentExp;
         private int _currentLevel = 1;
         private int _unallocatedSkillPoints;
@@ -21,11 +23,14 @@ namespace PlayForge_Team.RPG.Runtime
 
         private void Start()
         {
+            gameObject.SetActive(false);
             UpdateExp();
             UpdateHealth();
             UpdateStrength();
             UpdateUnallocatedSkillsPoints();
             UpdateLevel();
+            swordWeapon.SetActive(true);
+            longSwordWeapon.SetActive(false);
         }
 
         public void PlusHealth()
@@ -53,6 +58,21 @@ namespace PlayForge_Team.RPG.Runtime
         {
             _currentExp += expByEnemyKill;
             UpdateExp();
+        }
+
+        public void ChangeWeapon(string nameWeapon)
+        {
+            switch (nameWeapon)
+            {
+                case "Sword":
+                    swordWeapon.SetActive(true);
+                    longSwordWeapon.SetActive(false);
+                    break;
+                case "LongSword":
+                    swordWeapon.SetActive(false);
+                    longSwordWeapon.SetActive(true);
+                    break;
+            }
         }
 
         private void UpdateExp()
