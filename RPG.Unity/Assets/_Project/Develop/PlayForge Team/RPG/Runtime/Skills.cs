@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using StarterAssets;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -126,7 +127,9 @@ namespace PlayForge_Team.RPG.Runtime
 
         public void OnToggleVisibilitySkillWindow()
         {
-            gameObject.SetActive(!gameObject.activeInHierarchy);
+            GameObject o;
+            (o = gameObject).SetActive(!gameObject.activeInHierarchy);
+            Cursor.lockState = !o.activeInHierarchy ? CursorLockMode.Locked : CursorLockMode.None;
         }
     }
 }
